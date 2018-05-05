@@ -1,24 +1,46 @@
-<form>
+<form 
+(ngSubmit)="validarFormulario(formulario)" 
+#formulario="ngForm"
+>
     <div class="form-group">
       <label for="exampleInputEmail1">Email address</label>
       <input 
       type="email" 
       [value]="valorCorreo"
+      (click)="cambiarColor()"
+      (keypress)="cambioValorCorreo($event)"
       class="form-control" 
       id="exampleInputEmail1" 
       aria-describedby="emailHelp" 
+      #objetoCorreo
       placeholder="Enter email">
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Password</label>
+      <pre>Password: {{password}}</pre>
+      <pre>claseBoton: {{claseBoton}}</pre>
+      <pre>colorTextoBoton {{colorTextoBoton}}</pre>
       <input 
       [type]="tipoInput" 
+      [(ngModel)]="password"
+      name="password"
       class="form-control" 
       id="exampleInputPassword1" 
-      placeholder="Password">
+      placeholder="Password"
+      #objetoPassword
+      >
     </div>
     <button type="submit" 
     [class]="claseBoton"
     [style.color]="colorTextoBoton"
-    >Submit</button>
+    (click)="guardarPassword(objetoPassword, objetoCorreo)">
+    Submit
+  </button>
+    
+    <button type="button" 
+    class="btn btn-info"
+    (click)="cambiarColor()"
+    >
+      Cambiar color
+    </button>
 </form>

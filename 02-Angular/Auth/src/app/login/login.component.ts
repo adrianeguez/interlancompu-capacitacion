@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
+  password = '';
   tipoInput = 'password';
   valorCorreo = 'me@yo.com';
   claseBoton = 'btn btn-success';
@@ -17,4 +18,21 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  cambiarColor(){
+    // !==
+    if(this.claseBoton === 'btn btn-success'){
+      this.claseBoton = 'btn btn-danger';
+    }else {
+      this.claseBoton = 'btn btn-success';
+    }
+    
+  }
+
+  cambioValorCorreo(evento){
+    console.log('Evento', evento.target.value + evento.key);
+  }
+  guardarPassword(objetoPassword,objetoCorreo){
+    console.log('objetoPassword', objetoPassword.value);
+    console.log('objetoCorreo', objetoCorreo.value);
+  }
 }
