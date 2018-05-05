@@ -1,3 +1,25 @@
 <h1>Header</h1>
-<router-outlet></router-outlet>
+<!--
+div.container
+<div class="container"></div>
+div#mi-id
+<div id="mi-id"></div>
+div.col-sm-2*4
+<div class="col-sm-2"></div>
+<div class="col-sm-2"></div>
+<div class="col-sm-2"></div>
+<div class="col-sm-2"></div>
+-->
+
+
+
+
+
+<div class="container">
+  <ul>
+    <li><a [routerLink]="['login']">Login</a></li>
+    <li><a href="#/geolocalizacion">Geolocalizacion</a></li>
+  </ul>
+    <router-outlet></router-outlet>
+</div>
 <h1>Footer</h1>

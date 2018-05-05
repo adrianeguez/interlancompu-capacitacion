@@ -7,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
+  tipoInput = 'password';
+  valorCorreo = 'me@yo.com';
+  claseBoton = 'btn btn-success';
+  colorTextoBoton = '#000';
+
   constructor() { }
 
   ngOnInit() {
