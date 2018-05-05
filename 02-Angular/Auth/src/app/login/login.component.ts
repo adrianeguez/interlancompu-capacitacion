@@ -41,5 +41,12 @@ export class LoginComponent implements OnInit {
 
   validarFormulario(formulario:NgForm){
     console.log('Formulario', formulario);
+    if(formulario.valid){
+      const usuarioACrearse = {
+        nombre:formulario.controls.correo.value,
+        password:formulario.controls.password.value
+      }
+      this._usuarioService.crearUsuario(usuarioACrearse);
+    }
   }
 }
