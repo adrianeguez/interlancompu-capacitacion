@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { UsuarioService } from '../servicios/usuario.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,9 +17,15 @@ export class LoginComponent implements OnInit {
   claseBoton = 'btn btn-success';
   colorTextoBoton = '#000';
 
-  constructor(private _usuarioService: UsuarioService) { }
+  constructor(private _usuarioService: UsuarioService,
+    private _activatedRoute: ActivatedRoute,
+    private _router:Router
+  ) { }
 
   ngOnInit() {
+    this._router.navigate(['geolocalizacion']);
+    console.log('window.URL',window.location);
+    console.log('ruta',this._activatedRoute);
   }
 
   cambiarColor(){
@@ -52,7 +59,7 @@ export class LoginComponent implements OnInit {
       const observableGoogle$ = this._usuarioService
       .consultarGoogle();
 
-      observableGoogle$
+      observableCrearUsuario$
       .subscribe(
         (respuestaOk)=>{
           console.log('respuestaOk',respuestaOk);
