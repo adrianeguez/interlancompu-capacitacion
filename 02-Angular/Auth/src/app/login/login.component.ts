@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this._router.navigate(['geolocalizacion']);
+    // this._router.navigate(['geolocalizacion']);
     console.log('window.URL',window.location);
     console.log('ruta',this._activatedRoute);
   }
