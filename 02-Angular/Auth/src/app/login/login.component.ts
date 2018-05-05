@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { UsuarioService } from '../servicios/usuario.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
   claseBoton = 'btn btn-success';
   colorTextoBoton = '#000';
 
-  constructor() { }
+  constructor(private _usuarioService: UsuarioService) { }
 
   ngOnInit() {
   }
