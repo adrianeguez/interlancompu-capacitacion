@@ -11,4 +11,8 @@ export class UsuarioService {
     return this._http.post(this.url + this.modelo,usuario);
   }
 
+  consultarGoogle(){
+    return this._http.get('http://www.google.com');
+  }
+
 }

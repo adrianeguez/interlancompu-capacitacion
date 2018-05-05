@@ -46,7 +46,25 @@ export class LoginComponent implements OnInit {
         nombre:formulario.controls.correo.value,
         password:formulario.controls.password.value
       }
-      this._usuarioService.crearUsuario(usuarioACrearse);
+      const observableCrearUsuario$ = this._usuarioService
+      .crearUsuario(usuarioACrearse);
+
+      const observableGoogle$ = this._usuarioService
+      .consultarGoogle();
+
+      observableGoogle$
+      .subscribe(
+        (respuestaOk)=>{
+          console.log('respuestaOk',respuestaOk);
+        },
+        (error)=>{
+          console.log('error',error);
+        },
+        ()=>{
+          // se termina el stream
+          console.log('Terminamos el proceso');
+        }
+      )
     }
   }
 }
