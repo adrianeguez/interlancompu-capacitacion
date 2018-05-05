@@ -4,36 +4,60 @@
 >
     <div class="form-group">
       <label for="exampleInputEmail1">Email address</label>
+      
       <input 
       type="email" 
-      [value]="valorCorreo"
+      [(ngModel)]="correo"
+      name="correo"
+      pattern="/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/"
       (click)="cambiarColor()"
       (keypress)="cambioValorCorreo($event)"
       class="form-control" 
       id="exampleInputEmail1" 
       aria-describedby="emailHelp" 
-      #objetoCorreo
+      #objetoCorreo="ngModel"
       placeholder="Enter email">
+
+      <pre>{{objetoCorreo.errors | json}}</pre>
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Password</label>
       <pre>Password: {{password}}</pre>
       <pre>claseBoton: {{claseBoton}}</pre>
       <pre>colorTextoBoton {{colorTextoBoton}}</pre>
+
+      <pre>pristine {{objetoPassword.pristine}}</pre>
+      <pre>touched {{objetoPassword.touched}}</pre>
+      <pre>dirty {{objetoPassword.dirty}}</pre>
+      <pre>untouched {{objetoPassword.untouched}}</pre>
       <input 
       [type]="tipoInput" 
       [(ngModel)]="password"
       name="password"
+      pattern="^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$"
+      required
+      minlength="2"
+      maxlength="10"
       class="form-control" 
       id="exampleInputPassword1" 
       placeholder="Password"
-      #objetoPassword
+      #objetoPassword="ngModel"
       >
+
+      <div *ngIf="objetoPassword.touched && objetoPassword.errors">
+          <div class="alert alert-warning" role="alert"
+          *ngIf="objetoPassword.errors.required"
+          >
+              El password es requerido.
+          </div>
+      </div>
+
+      <pre>{{objetoPassword.errors | json}}</pre>
     </div>
     <button type="submit" 
+    [disabled]="!formulario.valid"
     [class]="claseBoton"
-    [style.color]="colorTextoBoton"
-    (click)="guardarPassword(objetoPassword, objetoCorreo)">
+    [style.color]="colorTextoBoton">
     Submit
   </button>
     

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -7,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  password = '';
+  password;
+  email = '';
   tipoInput = 'password';
   valorCorreo = 'me@yo.com';
   claseBoton = 'btn btn-success';
@@ -34,5 +36,9 @@ export class LoginComponent implements OnInit {
   guardarPassword(objetoPassword,objetoCorreo){
     console.log('objetoPassword', objetoPassword.value);
     console.log('objetoCorreo', objetoCorreo.value);
+  }
+
+  validarFormulario(formulario:NgForm){
+    console.log('Formulario', formulario);
   }
 }
